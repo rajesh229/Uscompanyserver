@@ -48,7 +48,8 @@ router.post("/empsave",(req,res)=>{
 
 router.post('/login',(req,res) => {
     let userDetails;
-    Employee.findOne({$or:[{Name:req.body.Name},{Emailid:req.body.Name}]}).then(userd => {
+   // console.log(parseInt(req.body.Name))
+    Employee.findOne({$or:[{Mobilenumber:req.body.Name },{Emailid:req.body.Name}]}).then(userd => {
         userDetails = userd
         if(!userd) {
        let obj=  {
