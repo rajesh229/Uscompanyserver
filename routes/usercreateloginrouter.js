@@ -77,13 +77,15 @@ router.post('/login',(req,res) => {
           let token =jwt.sign({Name: userDetails.Name, userId:userDetails._id,Desiganation:userDetails.Desiganation},'thisissecretkeyanditisverylong')
 
                         if(token) {
-                            return res.status(200).json({
+                        let obj=   {
                                 message: 'Login Successful',
                                 status: 200,
                                 error:null,
                                 result: userDetails,
-                                token: token
-                            })
+                                token: token,
+                                status: 200,
+                            }
+                            res.send(obj)
                         } else {
                             let obj={
                                 message: 'Unable to generate token',
